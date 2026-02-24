@@ -114,7 +114,7 @@ notebooks/
 - Hypothesis 1: Human-centred Skills and Automation Risk
 - Hypothesis 2: Hypothesis 2: Digital and Domain skills
 
-#### Phase 4 – Build a PowerBI Dashboard
+#### Phase 4 – Build a Dashboard
 
 Communicate results to institutions.
 1. Extract & Load Data
@@ -140,7 +140,7 @@ Final Report Must Include:
 
 
 ## Rationale 
-#### Data Limitation
+### Data Limitation
 Only 14.4% of the 50,015 job postings could be matched to the automation-risk dataset. This means that all tests, models, and comparisons are based on a much smaller sample.
 
 Because of this:
@@ -149,7 +149,7 @@ Because of this:
 
 During the merging process, multiple job postings matched the same role. This created duplicate rows. The dataset was cleaned by removing duplicates using unique job links. This step is reported clearly to ensure transparency and accuracy.
 
-#### Hypothesis 1 – Human-Centred Skills and Automation Risk
+### Hypothesis 1 – Human-Centred Skills and Automation Risk
 The analysis examined whether jobs that require higher levels of human-centred skills, such as communication and creativity, are less exposed to automation risk.
 
 A scatter plot was used to assess the relationship between human-centred skills and automation risk, as it allows all individual data points to be visualised and helps identify whether a linear relationship exists.
@@ -162,12 +162,12 @@ For H1b (task repetition vs. automation risk), the scatter plot appeared flat an
 
 ![alt text](Assets/image-1.png)
 
-#### Business Implications – Hypothesis 1
+#### Business Implications 
 From a strategic point of view, the findings suggest that simply placing more emphasis on general “human skills” may not be enough to significantly reduce graduates’ risk of being affected by automation. Although communication and creativity are still important, they should not be seen as the only protection against automation.
 
 In terms of curriculum design, this means that human-centred skills should be taught alongside technical and subject-specific knowledge, rather than as separate courses. Employability strategies should focus on developing collaboration, problem-solving, and creativity within each discipline so that these skills are more relevant to the labour market.
 
-#### Hypothesis 2 – Digital and Domain Skills
+### Hypothesis 2 – Digital and Domain Skills
 
 The second analysis compared roles that combine technical and domain expertise (Tech+Domain) with roles that primarily require technical skills.
 
@@ -181,14 +181,14 @@ For H2b (job growth), Tech + Domain roles show a higher average job growth rate 
 
 ![alt text](Assets/image-3.png)
 
-#### Business Implications – Hypothesis 2
+#### Business Implications 
 The results give useful guidance for curriculum planning. Although Tech + Domain roles do not show significantly higher job growth, they are linked to much lower automation risk. This suggests that these roles may offer better long-term stability.
 
 For future skill planning, this means that interdisciplinary programmes, which combine digital or technical skills with sector-specific knowledge may better prepare graduates for sustainable careers. Curriculum reviews should therefore focus on developing hybrid skill pathways, such as data and healthcare, AI and finance, or digital skills and sustainability.
 
 From an employability perspective, students should be encouraged to build subject expertise alongside their technical skills. This approach may help strengthen long-term career stability, even if short-term job growth differences are not statistically significant.
 
-#### Machine Learning Prototype
+### Machine Learning Prototype
 To test whether automation risk can be predicted using selected skill variables.
 Instead of showing visuals, the model performance metrics (R² and RMSE) were reported.
 
@@ -201,7 +201,7 @@ This means:
 - The model is not suitable for real-world prediction.
 - It is included as a proof of concept only.
 
-#### Business Implications – Machine Learning
+#### Business Implications 
 The low predictive accuracy suggests that automation risk is affected by many structural and job-related factors, not just the selected skill variables. For institutional decision-making, this means that simple prediction tools based only on skill demand may not be enough to accurately forecast job vulnerability.
 
 Instead, a broader strategic approach, including industry trends, technological change, job structures, and employer demand would provide a stronger basis for curriculum planning and employability strategies.
@@ -259,71 +259,6 @@ The project uses anonymised data, reports limitations clearly, avoids profiling 
 
 
 ## Dashboard Design
-The final dashboard differs in several respects from the original wireframe design.
-
-#### Structural Differences
-In the wireframe, four KPI cards were proposed:
-- Total job postings
-- Average automation risk
-- Average job growth
-- Average human-centred skills
-
-In the implemented dashboard, these KPIs are displayed as:
-- Average growth
-- Average risk
-- Average human-centred skills
-- Jobs count
-
-While the metrics are largely consistent, the wording has been simplified.
-
-#### Slicers and Filters
-
-The wireframe proposed automation risk band and job role as primary slicers.
-In the final dashboard:
-- A Skill Group slicer is included.
-- A Risk Band slicer is present (High, Low, Medium).
-This represents a shift from role-level filtering to skill-group-level filtering, placing greater emphasis on hypothesis testing rather than exploratory job-level analysis.
-
-#### Visualisations
-Scatter Plot (H1a)
-The scatter plot remains consistent with the wireframe. It shows:
-- Human-Centred Index (x-axis)
-- Automation Risk Score (y-axis)
-However, the implemented version contains a very high density of points, which slightly reduces interpretability compared to the cleaner conceptual layout shown in the wireframe.
-
-Bar Charts (H2a and H2b)
-The wireframe proposed two grouped comparisons:
-- Automation risk by skill group
-- Job growth by skill group
-
-In the final dashboard:
-- H2a (Average Automation Risk by Skill Group) is implemented.
-- H2b (Average Job Growth by Skill Group) is implemented.
-
-One comparison includes “All Other Roles” instead of strictly maintaining the original two proxy categories.
-This slightly modifies the original grouping logic but maintains alignment with the research hypotheses.
-
-Distribution Chart
-The column chart showing the distribution of automation risk (Low, Medium, High) is implemented as planned. This visual provides contextual support and matches the wireframe’s descriptive intent.
-
-Compared to the wireframe:
-- The final dashboard places the title centrally (“AI and the Future of Work and Learning”), to make it more presentation-oriented.
-- KPI cards are positioned prominently but use stronger colour contrasts than initially suggested.
-- Visual spacing is slightly tighter, particularly around the scatter plot.
-
-Overall:
-- All core hypotheses (H1a, H2a, H2b) are represented.
-- Summary metrics are displayed clearly.
-- Distribution context is preserved.
-
-However, there are three key differences:
-- Filtering emphasis shifted from job-role exploration to skill-group comparison.
-- Visual density (especially in the scatter plot) is higher than in the wireframe.
-- The final layout is more presentation-driven, with stronger styling choices.
-
-Overall, the dashboard successfully translates the wireframe into a functional and visually coherent analytical tool, with minor structural and stylistic deviations.
-
- 'The published dashboard can be found here: [View Here](https://app.powerbi.com/links/YAjlzsqQEM?ctid=c233c072-135b-431d-af59-35e05babf941&pbi_source=linkShare) 
 
 
 ## Development roadmap
@@ -359,7 +294,7 @@ Generative AI tools (ChatGPT, Github Chat) were used for:
 No external images, photographs or multimedia assets were used in this project.
 Dashboard wireframe - created using balsamiq
 Kanband snapshot - Github Kanban board 
-Dashboard Snapshot - PowerBI Dashboard 
+Dashboard Snapshot 
 
 ## Acknowledgements 
 I would like to express my gratitude to my facilitator and cohorts for support throughout this project.
