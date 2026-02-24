@@ -82,8 +82,9 @@ notebooks/
    hypothsis.ipynb
 
 3. README.md - Documenting the Process 
-4. Project Kanban Board - To manage the project 
-![alt text](Assets/Kanban_view2.png)
+4. Project Kanban Board - To manage the project
+
+![alt text](Assets/KanBan_Board.png)
 
 #### Phase 2 - ETL 
 
@@ -135,6 +136,7 @@ Final Report Must Include:
 - Dashboard Screenshots
 - ML results
 - Curriculum Recommendations
+- Ethical Consideration 
 
 
 ## Rationale 
@@ -160,6 +162,11 @@ For H1b (task repetition vs. automation risk), the scatter plot appeared flat an
 
 ![alt text](Assets/image-1.png)
 
+#### Business Implications – Hypothesis 1
+From a strategic point of view, the findings suggest that simply placing more emphasis on general “human skills” may not be enough to significantly reduce graduates’ risk of being affected by automation. Although communication and creativity are still important, they should not be seen as the only protection against automation.
+
+In terms of curriculum design, this means that human-centred skills should be taught alongside technical and subject-specific knowledge, rather than as separate courses. Employability strategies should focus on developing collaboration, problem-solving, and creativity within each discipline so that these skills are more relevant to the labour market.
+
 #### Hypothesis 2 – Digital and Domain Skills
 
 The second analysis compared roles that combine technical and domain expertise (Tech+Domain) with roles that primarily require technical skills.
@@ -174,6 +181,13 @@ For H2b (job growth), Tech + Domain roles show a higher average job growth rate 
 
 ![alt text](Assets/image-3.png)
 
+#### Business Implications – Hypothesis 2
+The results give useful guidance for curriculum planning. Although Tech + Domain roles do not show significantly higher job growth, they are linked to much lower automation risk. This suggests that these roles may offer better long-term stability.
+
+For future skill planning, this means that interdisciplinary programmes, which combine digital or technical skills with sector-specific knowledge may better prepare graduates for sustainable careers. Curriculum reviews should therefore focus on developing hybrid skill pathways, such as data and healthcare, AI and finance, or digital skills and sustainability.
+
+From an employability perspective, students should be encouraged to build subject expertise alongside their technical skills. This approach may help strengthen long-term career stability, even if short-term job growth differences are not statistically significant.
+
 #### Machine Learning Prototype
 To test whether automation risk can be predicted using selected skill variables.
 Instead of showing visuals, the model performance metrics (R² and RMSE) were reported.
@@ -186,6 +200,11 @@ This means:
  - The model explains only a small part of the variation.
 - The model is not suitable for real-world prediction.
 - It is included as a proof of concept only.
+
+#### Business Implications – Machine Learning
+The low predictive accuracy suggests that automation risk is affected by many structural and job-related factors, not just the selected skill variables. For institutional decision-making, this means that simple prediction tools based only on skill demand may not be enough to accurately forecast job vulnerability.
+
+Instead, a broader strategic approach, including industry trends, technological change, job structures, and employer demand would provide a stronger basis for curriculum planning and employability strategies.
 
 
 ## Analysis techniques used
@@ -211,12 +230,32 @@ A simple linear regression model was used as:
 
 
 ## Ethical considerations
-This project uses two publicly available Kaggle datasets: a LinkedIn job postings and skills dataset and an AI automation risk by job role dataset. Both datasets contain aggregated information about job roles and skills. They do not include personal names, contact details, or other identifying information. Therefore, there is no direct risk to individual privacy.
+This project uses two publicly available datasets from Kaggle:
 
-However, some ethical concerns remain. The LinkedIn job postings dataset includes only jobs advertised on LinkedIn and collected by the dataset authors. This creates platform bias. Jobs from organisations or regions that do not widely use LinkedIn may be underrepresented. As a result, smaller employers, informal labour markets, and roles in developing regions may not be fully represented in the data.
+- A LinkedIn job postings and skills dataset
+- An AI automation risk dataset by job role
 
-The automation risk and skill measures in the AI automation risk dataset are based on secondary sources or modelling assumptions rather than direct observation. These estimates may reflect the judgement of the dataset creators and may contain hidden assumptions about which jobs are more likely to be automated.
+Both datasets contain aggregated information about occupations and skills. They do not include personal names, contact details, demographic information, or any directly identifiable personal data. Therefore, the project does not process special category data or identifiable personal information.
 
+This section examines privacy, governance, legal, and social implications in the UK context.
+
+#### Data Privacy and Governance
+The datasets do not contain personal data. The project follows UK GDPR principles by using only necessary data, keeping it secure, and analysing it at an aggregated level. No individuals or employers are identified.
+
+#### Platform Bias and Representation
+The LinkedIn dataset may not represent the whole labour market. It may underrepresent small businesses, informal jobs, and some regions, while overrepresenting digital and professional roles. This means conclusions should be cautious and not overgeneralised.
+
+#### Modelling Assumptions and Algorithmic Ethics
+Automation risk scores are based on research models and assumptions, not direct measurement. These scores are estimates and may reflect bias. The project treats them carefully and avoids presenting them as certain predictions.
+
+#### Legal Implications (UK Context)
+Because the data is anonymised and publicly available, it does not raise major legal issues under UK GDPR. The project does not involve automated decisions about individuals. 
+
+#### Social Implications
+Describing jobs as “high automation risk” could cause concern or discourage certain career choices. Automation often changes jobs rather than removes them completely. Curriculum decisions should not rely only on automation data.
+
+#### Responsible and Compliant Practice
+The project uses anonymised data, reports limitations clearly, avoids profiling individuals, and interprets results carefully. The main ethical risk is not privacy but misinterpretation or overgeneralisation of findings.
 
 
 ## Dashboard Design
