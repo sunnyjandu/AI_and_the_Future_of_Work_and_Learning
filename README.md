@@ -124,7 +124,7 @@ Communicate results to institutions.
 
 #### Phase 5 - Build the data-driven prototype (ML)
 
--  Build a Decision Tree Classifier
+-  Build a ML prototype
 
 #### Phase 6 – Documentation
 Final Report Must Include:
@@ -279,6 +279,9 @@ Python Libraries Used:
 - SciPy: To conduct statistical hypothesis testing.
 - Statsmodels: Used to estimate linear regression models for Hypothesis.
 - Scikit-learn: Used to build a simple predictive prototype model.
+- Streamlit – Web app framework (UI, layout, interactivity)
+- Plotly.express – Interactive visualizations
+- Os – File path checks 
 
 ## Credits & Content
 The datasets used in this project were obtained from Kaggle:
@@ -288,7 +291,8 @@ The datasets used in this project were obtained from Kaggle:
 Generative AI tools (ChatGPT, Github Chat) were used for:
 - Ideas and brainstorming
 - Support in data analysis workflow coding to achieve the desired results
-- EDA & hypothesthis testing choices and explanations. 
+- EDA & hypothesthis testing choices and explanations.
+- Streamlit app code support  
 
 ## Media
 No external images, photographs or multimedia assets were used in this project.
