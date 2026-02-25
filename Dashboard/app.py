@@ -1,3 +1,6 @@
+# This Streamlit app presents the results of automation risk analysis in a business-friendly dashboard.
+
+# Import the necessary libraries
 import os
 import numpy as np
 import pandas as pd
@@ -7,43 +10,40 @@ from sklearn.linear_model import LinearRegression
 from sklearn.metrics import r2_score
 from scipy import stats
 
-# =============================================================================
-# CONFIG
-# =============================================================================
+# Streamlit page configuration
 st.set_page_config(
-    page_title="Automation Risk Dashboard",
+    page_title="AI and the Future of Work and Learning Dashboard",
     layout="wide",
     initial_sidebar_state="expanded",
 )
 
-# -----------------------------
-# Default paths (keep yours)
-# -----------------------------
+# Filepath 
 POSTINGS_CSV_DEFAULT = r"C:\Users\sunde\Downloads\Data Analyst Course\Capstone Projects\AI-and-the-Future-of-Work-and-Learning\processed\dashboard_data.csv"
 ROLES_H2_CSV_DEFAULT = r"C:\Users\sunde\Downloads\Data Analyst Course\Capstone Projects\AI-and-the-Future-of-Work-and-Learning\processed\roles_h2_source.csv"
 TOTAL_POSTINGS_DEFAULT = 50015
 
-# =============================================================================
-# HELPERS (kept compatible with your hypothesis logic)
-# =============================================================================
+# Load CSV with caching 
 @st.cache_data(show_spinner=False)
 def load_csv(uploaded_file, path: str) -> pd.DataFrame:
     if uploaded_file is not None:
         return pd.read_csv(uploaded_file)
     return pd.read_csv(path)
 
+# column validation 
 def require_cols(df: pd.DataFrame, cols, label: str):
     missing = [c for c in cols if c not in df.columns]
     if missing:
         st.error(f"{label}: Missing columns {missing}")
         st.stop()
 
+# convert columns to numeric 
 def to_num(df: pd.DataFrame, cols):
     for c in cols:
         if c in df.columns:
             df[c] = pd.to_numeric(df[c], errors="coerce")
     return df
 
+# Linear R² calculation for scatter plots
 def linear_r2(x: np.ndarray, y: np.ndarray) -> float:
     x = x.reshape(-1, 1)
     m = LinearRegression().fit(x, y)
@@ -64,6 +64,7 @@ def one_sided_p_from_two_sided(t_stat, p_two, mean_x, mean_y, direction):
         return (p_two / 2) if (mean_x > mean_y) else (1 - p_two / 2)
     raise ValueError("direction must be 'less' or 'greater'")
 
+# P-value formatting for display
 def format_p(p):
     if pd.isna(p):
         return "nan"
@@ -71,6 +72,7 @@ def format_p(p):
         return "<0.001"
     return f"{p:.3f}"
 
+# Risk bands for categorization 
 def risk_band(series: pd.Series) -> pd.Series:
     # Bands are business-friendly; tweak thresholds if your score scale differs.
     # Assumes automation_risk_score is 0–1-ish. If it’s 0–100, adjust cutoffs.
@@ -84,14 +86,14 @@ def safe_mean(x):
 def safe_median(x):
     return float(np.nanmedian(x)) if len(x) else np.nan
 
+# CSV download helper 
 def df_to_csv_bytes(df: pd.DataFrame) -> bytes:
     return df.to_csv(index=False).encode("utf-8")
 
-# =============================================================================
-# SIDEBAR (inputs + global filters)
-# =============================================================================
+# sidebar inputs and controls 
 st.sidebar.title("Data Inputs")
 
+# sidebar header 
 postings_up = st.sidebar.file_uploader("Upload POSTINGS CSV (optional)", type=["csv"])
 postings_path = st.sidebar.text_input("POSTINGS CSV path", value=POSTINGS_CSV_DEFAULT)
 
@@ -114,9 +116,7 @@ st.sidebar.caption("Debug")
 st.sidebar.write("Postings exists?", os.path.exists(postings_path.strip()))
 st.sidebar.write("Roles-H2 exists?", os.path.exists(roles_path.strip()))
 
-# =============================================================================
-# LOAD + VALIDATE
-# =============================================================================
+# Load and preprocess data
 postings = load_csv(postings_up, postings_path.strip())
 roles_h2 = load_csv(roles_up, roles_path.strip())
 
@@ -137,7 +137,7 @@ require_cols(
 postings = to_num(postings, ["human_centred_index", "task_repetition_level", "automation_risk_score"])
 roles_h2 = to_num(roles_h2, ["automation_risk_score", "job_growth_rate"])
 
-# Deduplicate postings by job_link (your logic)
+# Deduplicate postings by job_link 
 postings = postings.sort_values("job_link").drop_duplicates("job_link").copy()
 
 # Full-case postings for H1 (your logic)
@@ -145,17 +145,15 @@ postings_h1 = postings.dropna(subset=[
     "job_role_mapped", "human_centred_index", "task_repetition_level", "automation_risk_score"
 ]).copy()
 
-# H2 datasets: drop NA like your notebook
+# H2 datasets: drop NA 
 h2a = roles_h2.dropna(subset=["automation_risk_score"]).copy()
 h2b = roles_h2.dropna(subset=["job_growth_rate"]).copy()
 
-# Add derived band for business views
+# Add risk bands
 postings_h1["risk_band"] = risk_band(postings_h1["automation_risk_score"])
 h2a["risk_band"] = risk_band(h2a["automation_risk_score"])
 
-# =============================================================================
-# HEADER + EXEC SUMMARY
-# =============================================================================
+# Header 
 st.title("Automation Risk vs Skills — Business Dashboard")
 
 match_rate = (len(postings_h1) / total_postings) if total_postings else np.nan
@@ -175,9 +173,7 @@ st.info(
     f"- **H2** uses role-level groups from `roles_h2_source.csv` (same as your hypothesis tests)."
 )
 
-# =============================================================================
-# GLOBAL FILTERS (for business exploration)
-# =============================================================================
+# role filter 
 with st.sidebar:
     st.subheader("Global Filters")
 
@@ -202,9 +198,7 @@ f_postings = f_postings[
     (f_postings["automation_risk_score"] >= rmin) & (f_postings["automation_risk_score"] <= rmax)
 ]
 
-# =============================================================================
-# TABS
-# =============================================================================
+# Tabs for different views
 tab_exec, tab_h1, tab_h2, tab_quality = st.tabs([
     "Executive View",
     "H1 — Postings",
@@ -212,9 +206,7 @@ tab_exec, tab_h1, tab_h2, tab_quality = st.tabs([
     "Data Quality",
 ])
 
-# =============================================================================
-# EXECUTIVE VIEW
-# =============================================================================
+# Executive summary tab with key charts
 with tab_exec:
     st.subheader("Executive View")
 
@@ -273,9 +265,7 @@ with tab_exec:
         "- **H2:** Roles blending **Tech + Domain** skills show **lower automation risk** and **higher growth** than **Technical-only** roles (per your tests)."
     )
 
-# =============================================================================
-# H1 — POSTINGS (business + analytics)
-# =============================================================================
+# H1 hypothesis details 
 with tab_h1:
     st.subheader("Hypothesis 1 — Posting-level (with filters applied)")
 
@@ -340,9 +330,7 @@ with tab_h1:
         mime="text/csv"
     )
 
-# =============================================================================
-# H2 — ROLES (matches notebook logic + adds business summary)
-# =============================================================================
+# H2 hypothesis details
 with tab_h2:
     st.subheader("Hypothesis 2 — Role-level (matches notebook)")
 
@@ -353,9 +341,7 @@ with tab_h2:
 
     st.divider()
 
-    # -----------------------------
     # H2a (risk): Tech+Domain < Technical-only
-    # -----------------------------
     st.markdown("### H2a — Automation risk by skill group")
     risk_td = h2a.loc[h2a["skill_group"] == "Tech+Domain", "automation_risk_score"].values
     risk_to = h2a.loc[h2a["skill_group"] == "Technical-only", "automation_risk_score"].values
@@ -397,9 +383,7 @@ with tab_h2:
 
     st.divider()
 
-    # -----------------------------
     # H2b (growth): Tech+Domain > Technical-only
-    # -----------------------------
     st.markdown("### H2b — Job growth rate by skill group")
     growth_td = h2b.loc[h2b["skill_group"] == "Tech+Domain", "job_growth_rate"].values
     growth_to = h2b.loc[h2b["skill_group"] == "Technical-only", "job_growth_rate"].values
@@ -450,9 +434,7 @@ with tab_h2:
         mime="text/csv"
     )
 
-# =============================================================================
-# DATA QUALITY
-# =============================================================================
+# Data quality and diagnostics
 with tab_quality:
     st.subheader("Data Quality")
 
