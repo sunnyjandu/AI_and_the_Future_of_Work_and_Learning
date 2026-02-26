@@ -10,7 +10,7 @@ from scipy import stats
 st.set_page_config(page_title="Future of Work and Learning", layout="wide")
 
 # dataset I'll be working with 
-DATA_CSV_DEFAULT = r".\processed\dashboard_data.csv"
+DATA_CSV_DEFAULT = r"processed/dashboard_data.csv"
 TOTAL_POSTINGS_DEFAULT = 50015
 
 # load csv file, with caching to speed repeated runs
