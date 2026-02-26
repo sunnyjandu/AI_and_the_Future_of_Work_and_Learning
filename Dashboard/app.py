@@ -7,7 +7,7 @@ import plotly.express as px
 from scipy import stats
 
 # basic page setup 
-st.set_page_config(page_title="AI and the Future of Work and Learning", layout="wide")
+st.set_page_config(page_title="Future of Work and Learning", layout="wide")
 
 # dataset I'll be working with 
 DATA_CSV_DEFAULT = r"C:\Users\sunde\Downloads\Data Analyst Course\Capstone Projects\AI-and-the-Future-of-Work-and-Learning\processed\dashboard_data.csv"
