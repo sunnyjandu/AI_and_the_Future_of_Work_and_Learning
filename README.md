@@ -405,10 +405,10 @@ Generative AI tools (ChatGPT, Github Chat) were used for:
 - Streamlit app code support  
 
 ## Media
-No external images, photographs or multimedia assets were used in this project.
-Dashboard wireframe - created using balsamiq
-Kanband snapshot - Github Kanban board 
-Dashboard Snapshot 
+- No external images, photographs or multimedia assets were used in this project.
+- Dashboard wireframe - created using balsamiq
+- Kanband snapshot - Github Kanban board 
+- Dashboard Snapshot 
 
 ## Acknowledgements 
 I would like to express my gratitude to my facilitator and cohorts for support throughout this project.
