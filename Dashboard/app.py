@@ -161,7 +161,7 @@ h2a = roles_h2.dropna(subset=["automation_risk_score"]).copy()
 h2b = roles_h2.dropna(subset=["job_growth_rate"]).copy()
 
 # kpis and summary metrics at the top
-st.title(" AI and the Future of Work and Learning Dashboard")
+st.title("Future of Work and Learning")
 
 match_rate = (len(postings_h1) / total_postings) if total_postings else np.nan
 
