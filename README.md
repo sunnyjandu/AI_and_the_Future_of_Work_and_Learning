@@ -343,10 +343,33 @@ The dashboard also allows users to:
 
 This supports transparency, traceability, and responsible interpretation.
 
-**The published dashboard can be found here: link**
+**The published dashboard can be found here: https://future-of-work-and-learning-fbc134616425.herokuapp.com/**
 
 ## Deployment 
+#### Guide on Deployement
+Prepared the project for deployment:
+- Ensuring the Streamlit script was named app.py.
+- Confirmed the project had a requirements.txt file listing packages needed to run the app.
+- Ensuring the setup.sh and Procfile are created.
+- Created a new app in Heroku.
+- Connected the Heroku app to the GitHub repository.
+- Committed changes to the repository and deployed through Heroku.
+- Tested the live app and fixed any errors shown in the Heroku logs.
 
+#### Challenges
+
+1) Slug size too large
+- Issue: Heroku warning: Your slug size (455 MB) exceeds our soft limit (300 MB) which may affect boot time.
+- Impact: Increased build and boot time, risk of performance issues.
+- Solution: Removed unnecessary libraries from requirements.txt so only essential dependencies were installed, reducing slug size.
+
+2) App file location
+- Issue: Heroku could not run the app correctly when app.py was not in the expected main directory.
+- Solution: Restructured the repository so app.py was placed in the main project folder (root directory) used by the deployment process.
+
+3) Local file path not working in deployment
+- Issue: The app initially used a full local file path (Windows path), which does not exist in Heroku’s container.
+- Solution: Updated the code to use repository-relative paths (e.g., processed/dashboard_data.csv) so the dataset could be accessed in the deployed environment.
 
 ## Development roadmap
 The project followed an iterative development process that was shaped by technical limitations and data quality issues.
