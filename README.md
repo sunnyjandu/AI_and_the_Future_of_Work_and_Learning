@@ -259,6 +259,93 @@ The project uses anonymised data, reports limitations clearly, avoids profiling 
 
 
 ## Dashboard Design
+Below is a simple explanation of each section of the dashboard, how it was designed, and what it includes.
+
+#### 1. Overview tab
+Give a quick summary of automation risk across all job roles. It shows simple charts so users can quickly understand the overall situation before looking at detailed analysis.
+
+**Includes:**
+* A histogram showing automation risk scores
+* A breakdown of risk levels (Low, Medium, High)
+* Clear explanations of how risk levels are defined
+
+![alt text](Assets/app_overview.png)
+
+#### 2. Future Skill Demand
+Identify roles that are more likely to remain in demand and resist automation. Roles are ranked using an AI-resistance score. This score combines:
+
+* Human-centred skills
+* Low task repetition
+* Lower automation risk
+
+The goal was to create a clear and understandable measure of resilience.
+
+**Includes:**
+* A bar chart ranking roles by AI-resistance
+* Supporting metrics (number of postings, average risk, human skill index)
+* A clear explanation of how the resistance score is calculated
+
+#### 3. Job Vulnerability
+Compare roles based on both automation risk and resilience. A scatter plot is used to show automation risk on one axis and AI-resistance on the other. Bubble size represents job demand.
+
+This allows users to compare multiple factors at the same time.
+
+**Includes:**
+* Scatter plot (Automation Risk vs AI-Resistance)
+* Role-level summaries
+* Risk band classification
+* A supporting data table
+
+#### 4. Technical+Domain vs Technical-only
+Compare hybrid roles (Technical + Domain skills) with technical-only roles. Roles are grouped based on skill type. The analysis compares differences in automation risk and job growth.
+
+**Includes:**
+* Average automation risk by skill group
+* Average job growth comparison
+* Statistical testing (Welch’s t-test)
+* Display of t-statistics and p-values
+
+
+#### 5. Ethics & Data Quality
+Promote responsible and transparent use of the dashboard.
+
+**Includes:**
+* Ethical use statement
+* Missing data analysis
+* Dataset preview and export options
+
+#### Data Input and Key Metrics
+
+Users can:
+
+* Upload a CSV dataset
+* Use a default dataset
+* Download a template to follow the correct structure
+
+Before analysis begins, the dashboard checks that required columns and correct data types are present. This prevents errors and ensures consistency.
+
+At the top of the dashboard, summary metrics give a quick overview:
+
+* **Matched postings** – Number of valid postings used in analysis
+* **Match rate** – Percentage of usable postings
+* **Average automation risk** – Mean risk score
+* **Average AI-resistance score** – Mean resilience score
+
+These KPIs provide quick insight before detailed exploration.
+
+#### Data Output and Transparency
+
+The dashboard also allows users to:
+
+* View processed data tables
+* See missing value reports
+* Download the cleaned dataset
+
+This supports transparency, traceability, and responsible interpretation.
+
+**The published dashboard can be found here: link**
+
+## Deployment 
 
 
 ## Development roadmap
