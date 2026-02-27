@@ -192,7 +192,16 @@ with tabs[0]:
                 postings_h1,
                 x="automation_risk_score",
                 nbins=30,
-                title="Automation Risk Distribution"
+                title="Automation Risk Distribution",
+                color_discrete_sequence=["#FFDAB9"],  # pastel orange
+                opacity=0.75,
+                marginal="rug"
+            )
+            fig.update_layout(
+                bargap=0.1,
+                xaxis_title="Risk score",
+                yaxis_title="Count",
+                template="simple_white"
             )
             st.plotly_chart(fig, use_container_width=True)
 
@@ -216,8 +225,12 @@ with tabs[0]:
                 band_counts,
                 names="risk_band",
                 values="count",
-                title="Risk Bands (Low / Medium / High)"
+                title="Risk Bands (Low / Medium / High)",
+                color_discrete_sequence=["#FFC0CB", "#DDA0DD", "#FFDAB9"],  # pink, purple, orange
+                hole=0.3
             )
+            fig.update_traces(textinfo="percent+label")
+            fig.update_layout(template="simple_white")
             st.plotly_chart(fig, use_container_width=True)
 
             st.markdown(""" 
@@ -255,7 +268,8 @@ with tabs[1]:
             x="job_role_mapped",
             y="avg_resistance",
             hover_data=["postings", "avg_risk", "avg_human", "avg_repeat"],
-            title="Most AI Resistant Roles"
+            title="Most AI Resistant Roles",
+            color_discrete_sequence=["#FFC0CB", "#DDA0DD", "#FFDAB9"]  # mixed pastels
         )
         st.plotly_chart(fig, use_container_width=True)
 
@@ -303,7 +317,8 @@ with tabs[2]:
             size="postings",
             color="risk_band",
             hover_data=["job_role_mapped", "postings"],
-            title="Role positioning: AI Resistance vs Automation Risk"
+            title="Role positioning: AI Resistance vs Automation Risk",
+            color_discrete_sequence=["#FFC0CB", "#DDA0DD", "#FFDAB9"]
         )
         st.plotly_chart(fig, use_container_width=True)
 
@@ -348,10 +363,13 @@ with tabs[3]:
 
         a, b = st.columns(2)
         with a:
-            fig = px.bar(means, x="skill_group", y="mean_risk", title="Mean Automation Risk by Skill Group")
+            fig = px.bar(means, x="skill_group", y="mean_risk", title="Mean Automation Risk by Skill Group",
+                         color_discrete_sequence=["plum","pink","#FFDAB9"])
             st.plotly_chart(fig, use_container_width=True)
         with b:
-            fig = px.bar(means, x="skill_group", y="mean_growth", title="Mean Job Growth by Skill Group")
+            fig = px.bar(means, x="skill_group", y="mean_growth", title="Mean Job Growth by Skill Group",
+                         color_discrete_sequence=["plum","pink"])
+
             st.plotly_chart(fig, use_container_width=True)
 
         st.divider()
