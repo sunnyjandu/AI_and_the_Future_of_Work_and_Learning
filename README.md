@@ -160,7 +160,7 @@ For H1a (human-centred skills vs. automation risk), a slight downward trend was 
 
 For H1b (task repetition vs. automation risk), the scatter plot appeared flat and widely dispersed, with no visible pattern. This supports the statistical results, which showed that task repetition does not significantly predict automation risk.
 
-![alt text](Assets/image-1.png)
+![alt text](Assets/image2.png)
 
 #### Business Implications 
 From a strategic point of view, the findings suggest that simply placing more emphasis on general “human skills” may not be enough to significantly reduce graduates’ risk of being affected by automation. Although communication and creativity are still important, they should not be seen as the only protection against automation.
@@ -175,11 +175,11 @@ The comparison focused on two outcomes: automation risk and job growth. Bar char
 
 For H2a (automation risk), a clear difference between the two groups was observed. Tech+Domain roles demonstrated lower average automation risk compared to technical-only roles. This visual difference aligns with the statistically significant result obtained from the hypothesis test.
 
-![alt text](Assets/image-2.png)
+![alt text](Assets/image3.png)
 
 For H2b (job growth), Tech + Domain roles show a higher average job growth rate than technical-only roles. However, this difference is not statistically significant (p = 0.292). Although the bar chart indicates a visual difference between the groups, the statistical test suggests that this variation may be due to chance. Therefore, there is insufficient evidence to conclude that combining technical and domain skills significantly influences projected job growth in this dataset.
 
-![alt text](Assets/image-3.png)
+![alt text](Assets/image4.png)
 
 #### Business Implications 
 The results give useful guidance for curriculum planning. Although Tech + Domain roles do not show significantly higher job growth, they are linked to much lower automation risk. This suggests that these roles may offer better long-term stability.
@@ -195,6 +195,8 @@ Instead of showing visuals, the model performance metrics (R² and RMSE) were re
 ML results
 - R^2 : 0.01
 - RMSE: 0.266 
+
+![alt text](Assets/ML.png)
 
 This means:
  - The model explains only a small part of the variation.
@@ -296,7 +298,7 @@ This allows users to compare multiple factors at the same time.
 * Risk band classification
 * A supporting data table
 
-#### 4. Technical+Domain vs Technical-only
+#### 4. Skill Group Analysis
 Compare hybrid roles (Technical + Domain skills) with technical-only roles. Roles are grouped based on skill type. The analysis compares differences in automation risk and job growth.
 
 **Includes:**
@@ -322,6 +324,10 @@ Users can:
 * Use a default dataset
 * Download a template to follow the correct structure
 
+![alt text](<Assets/Data input-ouput.png>)
+
+![alt text](<Assets/Template .png>)
+
 Before analysis begins, the dashboard checks that required columns and correct data types are present. This prevents errors and ensures consistency.
 
 At the top of the dashboard, summary metrics give a quick overview:
@@ -332,6 +338,8 @@ At the top of the dashboard, summary metrics give a quick overview:
 * **Average AI-resistance score** – Mean resilience score
 
 These KPIs provide quick insight before detailed exploration.
+
+![alt text](Assets/kpi.png)
 
 #### Data Output and Transparency
 

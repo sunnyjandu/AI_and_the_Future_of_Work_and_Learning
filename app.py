@@ -175,7 +175,7 @@ tabs = st.tabs([
     "Overview",
     "Future Skill Demand",
     "Job Vulnerability",
-    "Technical+Domain vs Technical-only",
+    "Skill Group Analysis",
     "Ethics & Data Quality",
 ])
 
